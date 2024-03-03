@@ -8,7 +8,7 @@ import store from "./redux/store"
 import App from "./App"
 
 const globalStyles = css`
-  body {
+  * {
     margin: 0;
     font-family: "Roboto", sans-serif;
     padding: 0;

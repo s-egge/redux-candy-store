@@ -1,9 +1,11 @@
 import Inventory from "./components/Inventory"
+import Header from "./components/Header"
+import { ThemeProvider } from "@emotion/react"
 
 export default function App() {
   return (
     <>
-      <h1>Penny Candy Store</h1>
+      <Header />
       <Inventory />
     </>
   )
