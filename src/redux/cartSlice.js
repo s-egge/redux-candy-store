@@ -5,6 +5,7 @@ const cartSlice = createSlice({
   initialState: {
     products: [],
     distinctProducts: 0,
+    visible: true,
   },
   reducers: {
     // add a new item to cart or increase quantity of existing item in cart
@@ -22,10 +23,14 @@ const cartSlice = createSlice({
         product.quantity += action.payload.quantity
       }
     },
+    toggleCartView(state) {
+      state.visible = !state.visible
+    },
   },
 })
 
 export default cartSlice.reducer
 export const selectCart = (state) => state.cart.products
-export const { addToCart } = cartSlice.actions
+export const { addToCart, toggleCartView } = cartSlice.actions
 export const distinctProducts = (state) => state.cart.distinctProducts
+export const cartVisible = (state) => state.cart.visible
