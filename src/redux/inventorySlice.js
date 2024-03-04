@@ -27,7 +27,7 @@ const inventorySlice = createSlice({
   reducers: {
     addInventory(state, action) {
       const inventory = state.entities.find(
-        (product) => product.id === action.payload.id
+        (item) => item.id === action.payload.id
       )
       if (!inventory) {
         state.entities.push(action.payload)
@@ -37,12 +37,12 @@ const inventorySlice = createSlice({
     },
     reduceInventory(state, action) {
       console.log("In reduce inventory: ", action.payload)
-      const product = state.entities.find(
-        (product) => product.id === action.payload.candy.id
+      const item = state.entities.find(
+        (item) => item.id === action.payload.item.id
       )
-      if (product) {
+      if (item) {
         console.log("reducing inventory: ")
-        product.inStock -= action.payload.quantity
+        item.inStock -= action.payload.quantity
       }
     },
   },

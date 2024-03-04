@@ -1,6 +1,6 @@
 import { css, useTheme } from "@emotion/react"
 import { useSelector, useDispatch } from "react-redux"
-import { distinctProducts } from "../redux/cartSlice"
+import { distinctItems } from "../redux/cartSlice"
 import { toggleCartView } from "../redux/cartSlice"
 import ThemeToggle from "./ThemeToggle"
 import cartSVG from "../assets/CartSVG"
@@ -8,7 +8,7 @@ import CartSVG from "../assets/CartSVG"
 
 export default function Header() {
   const theme = useTheme()
-  const cartCount = useSelector(distinctProducts)
+  const cartCount = useSelector(distinctItems)
   const dispatch = useDispatch()
 
   const styles = css`

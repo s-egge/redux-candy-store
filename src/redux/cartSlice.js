@@ -4,8 +4,8 @@ import { reduceInventory } from "./inventorySlice"
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    products: [],
-    distinctProducts: 0,
+    items: [],
+    distinctItems: 0,
     visible: true,
   },
   reducers: {
@@ -13,17 +13,15 @@ const cartSlice = createSlice({
     addToCart(state, action) {
       console.log("action recieved by cart: ", action)
       console.log("current state: ", state)
-      const product = state.products.find(
-        (product) => product.id === action.payload.id
-      )
-      //if the product doesn't exist, add it and increment number of distinct proucts
-      if (!product) {
-        state.products.push(action.payload)
-        state.distinctProducts++
+      const item = state.items.find((item) => item.id === action.payload.id)
+      //if the item doesn't exist, add it and increment number of distinct proucts
+      if (!item) {
+        state.items.push(action.payload)
+        state.distinctItems++
 
         //if it does exist, add the quantity
       } else {
-        product.quantity += action.payload.quantity
+        item.quantity += action.payload.quantity
       }
     },
     toggleCartView(state) {
@@ -33,29 +31,30 @@ const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(reduceInventory, (state, action) => {
       console.log("In adding to cart extra reducer: ", action.payload)
-      const product = state.products.find(
-        (product) => product.id === action.payload.candy.id
+      const item = state.items.find(
+        (item) => item.id === action.payload.item.id
       )
-      //if product exists, add quantity
-      if (product) {
-        product.quantity += action.payload.quantity
-        //otherwise, create new product to put into cart
+      //if item exists, add quantity
+      if (item) {
+        item.quantity += action.payload.quantity
+        //otherwise, create new item to put into cart
       } else {
-        // destructure inStock from candy object, add quantity
-        const { inStock, ...rest } = action.payload.candy
-        const newCandy = {
+        // destructure inStock from item object, add quantity
+        const { inStock, ...rest } = action.payload.item
+        const newItem = {
           ...rest,
           quantity: action.payload.quantity,
         }
         //add to cart
-        state.products.push(newCandy)
+        state.items.push(newItem)
+        state.distinctItems++
       }
     })
   },
 })
 
 export default cartSlice.reducer
-export const selectCart = (state) => state.cart.products
+export const selectCart = (state) => state.cart.items
 export const { addToCart, toggleCartView } = cartSlice.actions
-export const distinctProducts = (state) => state.cart.distinctProducts
+export const distinctItems = (state) => state.cart.distinctItems
 export const cartVisible = (state) => state.cart.visible

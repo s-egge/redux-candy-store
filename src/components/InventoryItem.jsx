@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from "react-redux"
 import { reduceInventory } from "../redux/inventorySlice"
 import { useState } from "react"
 
-export default function Candy({ candy }) {
+export default function InventoryItem({ item }) {
   const dispatch = useDispatch()
   const theme = useTheme()
   const [quantity, setQuantity] = useState(0)
-  const inStock = candy.inStock
+  const inStock = item.inStock
 
   const handleChange = (event) => {
     const input = parseInt(event.target.value)
@@ -17,6 +17,7 @@ export default function Candy({ candy }) {
       //input is greater than inStock
     } else if (input > inStock) {
       setQuantity(inStock)
+      alert("That number is greater than the stock available.")
       //input is less than 0 or NaN
     } else {
       setQuantity(0)
@@ -25,7 +26,7 @@ export default function Candy({ candy }) {
 
   const handleAddToCart = () => {
     const cartItem = {
-      candy: candy,
+      item: item,
       quantity: quantity,
     }
     dispatch(reduceInventory(cartItem))
@@ -78,12 +79,12 @@ export default function Candy({ candy }) {
 
   return (
     <div css={styles}>
-      <h4>{candy.name}</h4>
+      <h4>{item.name}</h4>
       <div className="imgContainer">
-        <img src={candy.photoUrl} alt={candy.name} />
+        <img src={item.photoUrl} alt={item.name} />
       </div>
-      <p>Price: ${candy.price}</p>
-      <p>Stock: {candy.inStock}</p>
+      <p>Price: ${item.price}</p>
+      <p>Stock: {item.inStock}</p>
       <div>
         <input
           type="number"
