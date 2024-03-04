@@ -33,7 +33,7 @@ export default function ThemeToggle() {
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #fffefe;
+      background-color: ${theme.backgroundColor};
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }
@@ -46,13 +46,13 @@ export default function ThemeToggle() {
       width: 26px;
       left: 4px;
       bottom: 4px;
-      background-color: ${theme.purple};
+      background-color: ${theme.header};
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }
 
     input:checked + .slider {
-      background-color: ${theme.creamGrey};
+      background-color: ${theme.primaryColor};
     }
 
     input:focus + .slider {

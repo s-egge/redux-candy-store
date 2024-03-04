@@ -13,7 +13,9 @@ export default function Cart() {
     margin: 10px;
     padding: 10px;
     width: 25%;
-    background-color: ${theme.purple};
+    background-color: ${theme.backgroundColor};
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid ${theme.primaryHighlight};
     border-radius: 10px;
     height: fit-content;
 
@@ -21,6 +23,18 @@ export default function Cart() {
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
+    }
+
+    button {
+      padding: 3px 6px;
+      border-radius: 5px;
+      background-color: ${theme.primaryHighlight};
+      color: ${theme.text};
+      box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      transform: scale(1.05);
     }
   `
 

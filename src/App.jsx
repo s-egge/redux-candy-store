@@ -8,25 +8,25 @@ import { themeMode } from "./redux/themeSlice"
 
 const theme = {
   light: {
-    purple: "#dfdae8",
-    lightPurple: "#eae5f3",
-    blue: "#acc7d4",
-    darkGreen: "#bfdad1",
-    lightGreen: "#cee5d8",
-    creamGrey: "#f4f3f0",
     text: "#000000",
-    grey: "#7f7f7f",
+    grey: "#a9a9a9",
+
+    header: "#72b791",
+    headerHighlight: "#84c9a3",
+    backgroundColor: "#f4f3f0",
+    primaryColor: "#ffffff",
+    primaryHighlight: "#f4f3f0",
   },
 
   dark: {
-    purple: "#403847",
-    lightPurple: "#5b5164",
-    blue: "#467b89",
-    darkGreen: "#4a6d62",
-    lightGreen: "#547d6c",
-    creamGrey: "#292827",
     text: "#ffffff",
     grey: "#7f7f7f",
+
+    header: "#121416",
+    headerHighlight: "#1d2125",
+    backgroundColor: "#1d2125",
+    primaryColor: "#323940",
+    primaryHighlight: "#2d333b",
   },
 }
 
@@ -36,9 +36,11 @@ export default function App() {
 
   const styles = css`
     display: flex;
+    height: calc(100vh - 78px);
+    overflow: auto;
     background-color: ${darkMode
-      ? theme.dark.creamGrey
-      : theme.light.creamGrey};
+      ? theme.dark.backgroundColor
+      : theme.light.backgroundColor};
   `
 
   return (

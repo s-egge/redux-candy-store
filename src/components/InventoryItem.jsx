@@ -37,7 +37,8 @@ export default function InventoryItem({ item }) {
   }
 
   const styles = css`
-    background-color: ${theme.blue};
+    background-color: ${theme.primaryColor};
+    border: 1px solid ${theme.primaryHighlight};
     color: ${theme.text};
     display: flex;
     flex-direction: column;
@@ -75,13 +76,12 @@ export default function InventoryItem({ item }) {
     button {
       padding: 3px 6px;
       border-radius: 5px;
-      background-color: ${theme.darkGreen};
+      background-color: ${theme.primaryHighlight};
       color: ${theme.text};
-      border: none;
+      box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.1);
     }
 
     button:hover {
-      background-color: ${theme.green};
       transform: scale(1.05);
     }
 

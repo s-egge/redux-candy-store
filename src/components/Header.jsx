@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux"
 import { distinctItems } from "../redux/cartSlice"
 import { toggleCartView } from "../redux/cartSlice"
 import ThemeToggle from "./ThemeToggle"
-import cartSVG from "../assets/CartSVG"
 import CartSVG from "../assets/CartSVG"
 
 export default function Header() {
@@ -13,7 +12,7 @@ export default function Header() {
 
   const styles = css`
     color: ${theme.text};
-    background-color: ${theme.purple};
+    background-color: ${theme.header};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,14 +22,14 @@ export default function Header() {
       position: relative;
       border-radius: 25%;
       padding: 5px;
-      background-color: ${theme.purple};
+      background-color: ${theme.header};
       border: none;
       cursor: pointer;
       color: inherit;
     }
 
     button:hover {
-      background-color: ${theme.lightPurple};
+      background-color: ${theme.headerHighlight};
       transform: scale(1.1);
     }
 
@@ -38,12 +37,13 @@ export default function Header() {
       position: absolute;
       bottom: -5px;
       right: -5px;
-      background-color: ${theme.blue};
+      background-color: ${theme.backgroundColor};
       border-radius: 50%;
       color: ${theme.text};
       width: 15px;
       height: 15px;
       padding: 5px;
+      box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
     }
 
     .icon-tabler {

@@ -15,7 +15,8 @@ export default function CartItem({ item }) {
     padding: 5px;
     margin: 5px;
     color: ${theme.text};
-    background-color: ${theme.lightPurple};
+    background-color: ${theme.primaryColor};
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 
     .imgContainer {
@@ -43,7 +44,7 @@ export default function CartItem({ item }) {
 
     .icon {
       cursor: pointer;
-      color: ${theme.text};
+      stroke: ${theme.text};
       width: 40px;
     }
 
@@ -51,7 +52,7 @@ export default function CartItem({ item }) {
       align-self: flex-end;
       padding: 5px;
       border-radius: 5px;
-      background-color: ${theme.lightPurple};
+      background-color: ${theme.primaryHighlight};
       color: ${theme.text};
       border: none;
       cursor: pointer;
