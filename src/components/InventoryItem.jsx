@@ -25,11 +25,15 @@ export default function InventoryItem({ item }) {
   }
 
   const handleAddToCart = () => {
+    if (quantity === 0) {
+      return
+    }
     const cartItem = {
       item: item,
       quantity: quantity,
     }
     dispatch(reduceInventory(cartItem))
+    setQuantity(0)
   }
 
   const styles = css`
@@ -75,6 +79,20 @@ export default function InventoryItem({ item }) {
       color: ${theme.text};
       border: none;
     }
+
+    button:hover {
+      background-color: ${theme.green};
+      transform: scale(1.05);
+    }
+
+    button:disabled {
+      background-color: ${theme.grey};
+      cursor: not-allowed;
+    }
+
+    button:disabled:hover {
+      transform: none;
+    }
   `
 
   return (
@@ -84,7 +102,7 @@ export default function InventoryItem({ item }) {
         <img src={item.photoUrl} alt={item.name} />
       </div>
       <p>Price: ${item.price}</p>
-      <p>Stock: {item.inStock}</p>
+      <p>{item.inStock > 0 ? `Stock: ${item.inStock}` : "Out of stock"}</p>
       <div>
         <input
           type="number"
@@ -94,7 +112,9 @@ export default function InventoryItem({ item }) {
           max={inStock}
           onChange={handleChange}
         />
-        <button onClick={handleAddToCart}>Add to cart</button>
+        <button onClick={handleAddToCart} disabled={inStock === 0}>
+          Add to cart
+        </button>
       </div>
     </div>
   )

@@ -1,5 +1,10 @@
 import { css, useTheme } from "@emotion/react"
+import DeleteSVG from "../assets/DeleteSVG"
+import { useDispatch } from "react-redux"
+import { removeItem } from "../redux/cartSlice"
+
 export default function CartItem({ item }) {
+  const dispatch = useDispatch()
   const theme = useTheme()
   const price = item.price.toFixed(2)
   const total = (item.price * item.quantity).toFixed(2)
@@ -35,6 +40,28 @@ export default function CartItem({ item }) {
       padding: 10px;
       flex-grow: 1;
     }
+
+    .icon {
+      cursor: pointer;
+      color: ${theme.text};
+      width: 40px;
+    }
+
+    button {
+      align-self: flex-end;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: ${theme.lightPurple};
+      color: ${theme.text};
+      border: none;
+      cursor: pointer;
+      height: fit-content;
+      width: fit-content;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
   `
 
   return (
@@ -48,6 +75,9 @@ export default function CartItem({ item }) {
         <p>Quantity: {item.quantity}</p>
         <p>Total: ${total}</p>
       </div>
+      <button onClick={() => dispatch(removeItem(item))}>
+        <DeleteSVG />
+      </button>
     </div>
   )
 }

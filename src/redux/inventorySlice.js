@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { removeItem } from "./cartSlice"
 
 export const fetchInventory = createAsyncThunk(
   "inventory/fetchInventory",
@@ -58,6 +59,14 @@ const inventorySlice = createSlice({
       .addCase(fetchInventory.rejected, (state, action) => {
         state.loading = "idle"
         state.error = action.error.message
+      })
+      .addCase(removeItem, (state, action) => {
+        const item = state.entities.find(
+          (item) => item.id === action.payload.id
+        )
+        if (item) {
+          item.inStock += action.payload.quantity
+        }
       })
   },
 })

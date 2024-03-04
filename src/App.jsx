@@ -15,6 +15,7 @@ const theme = {
     lightGreen: "#cee5d8",
     creamGrey: "#f4f3f0",
     text: "#000000",
+    grey: "#7f7f7f",
   },
 
   dark: {
@@ -25,6 +26,7 @@ const theme = {
     lightGreen: "#547d6c",
     creamGrey: "#292827",
     text: "#ffffff",
+    grey: "#7f7f7f",
   },
 }
 

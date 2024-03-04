@@ -9,20 +9,14 @@ const cartSlice = createSlice({
     visible: true,
   },
   reducers: {
-    // add a new item to cart or increase quantity of existing item in cart
-    addToCart(state, action) {
-      console.log("action recieved by cart: ", action)
-      console.log("current state: ", state)
+    emptyCart(state) {
+      state.items = []
+      state.distinctItems = 0
+    },
+    removeItem(state, action) {
       const item = state.items.find((item) => item.id === action.payload.id)
-      //if the item doesn't exist, add it and increment number of distinct proucts
-      if (!item) {
-        state.items.push(action.payload)
-        state.distinctItems++
-
-        //if it does exist, add the quantity
-      } else {
-        item.quantity += action.payload.quantity
-      }
+      state.items = state.items.filter((item) => item.id !== action.payload.id)
+      state.distinctItems--
     },
     toggleCartView(state) {
       state.visible = !state.visible
@@ -55,6 +49,6 @@ const cartSlice = createSlice({
 
 export default cartSlice.reducer
 export const selectCart = (state) => state.cart.items
-export const { addToCart, toggleCartView } = cartSlice.actions
+export const { emptyCart, removeItem, toggleCartView } = cartSlice.actions
 export const distinctItems = (state) => state.cart.distinctItems
 export const cartVisible = (state) => state.cart.visible
