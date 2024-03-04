@@ -52,7 +52,7 @@ export default function ThemeToggle() {
     }
 
     input:checked + .slider {
-      background-color: #526278;
+      background-color: ${theme.creamGrey};
     }
 
     input:focus + .slider {

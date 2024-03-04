@@ -9,26 +9,28 @@ import { themeMode } from "./redux/themeSlice"
 const theme = {
   light: {
     purple: "#dfdae8",
+    lightPurple: "#eae5f3",
     blue: "#acc7d4",
     darkGreen: "#bfdad1",
     lightGreen: "#cee5d8",
     creamGrey: "#f4f3f0",
+    text: "#000000",
   },
 
   dark: {
-    purple: "#3c3847",
+    purple: "#403847",
+    lightPurple: "#5b5164",
     blue: "#467b89",
     darkGreen: "#4a6d62",
     lightGreen: "#547d6c",
     creamGrey: "#292827",
+    text: "#ffffff",
   },
 }
 
 export default function App() {
   const darkMode = useSelector(themeMode)
   const cartIsVisible = useSelector(cartVisible)
-
-  console.log("darkMode", darkMode)
 
   const styles = css`
     display: flex;

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { reduceInventory } from "./inventorySlice"
 
 const cartSlice = createSlice({
   name: "cart",
@@ -10,6 +11,8 @@ const cartSlice = createSlice({
   reducers: {
     // add a new item to cart or increase quantity of existing item in cart
     addToCart(state, action) {
+      console.log("action recieved by cart: ", action)
+      console.log("current state: ", state)
       const product = state.products.find(
         (product) => product.id === action.payload.id
       )
@@ -26,6 +29,28 @@ const cartSlice = createSlice({
     toggleCartView(state) {
       state.visible = !state.visible
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(reduceInventory, (state, action) => {
+      console.log("In adding to cart extra reducer: ", action.payload)
+      const product = state.products.find(
+        (product) => product.id === action.payload.candy.id
+      )
+      //if product exists, add quantity
+      if (product) {
+        product.quantity += action.payload.quantity
+        //otherwise, create new product to put into cart
+      } else {
+        // destructure inStock from candy object, add quantity
+        const { inStock, ...rest } = action.payload.candy
+        const newCandy = {
+          ...rest,
+          quantity: action.payload.quantity,
+        }
+        //add to cart
+        state.products.push(newCandy)
+      }
+    })
   },
 })
 

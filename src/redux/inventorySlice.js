@@ -30,7 +30,19 @@ const inventorySlice = createSlice({
         (product) => product.id === action.payload.id
       )
       if (!inventory) {
-        state.push(action.payload)
+        state.entities.push(action.payload)
+      } else {
+        inventory.inStock += action.payload.inStock
+      }
+    },
+    reduceInventory(state, action) {
+      console.log("In reduce inventory: ", action.payload)
+      const product = state.entities.find(
+        (product) => product.id === action.payload.candy.id
+      )
+      if (product) {
+        console.log("reducing inventory: ")
+        product.inStock -= action.payload.quantity
       }
     },
   },
@@ -52,4 +64,4 @@ const inventorySlice = createSlice({
 
 export default inventorySlice.reducer
 export const selectInventory = inventorySlice.selectSlice
-export const { addInventory } = inventorySlice.actions
+export const { addInventory, reduceInventory } = inventorySlice.actions

@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux"
 import { distinctProducts } from "../redux/cartSlice"
 import { toggleCartView } from "../redux/cartSlice"
 import ThemeToggle from "./ThemeToggle"
-
-import cartSVG from "../assets/cart.svg"
+import cartSVG from "../assets/CartSVG"
+import CartSVG from "../assets/CartSVG"
 
 export default function Header() {
   const theme = useTheme()
@@ -12,6 +12,7 @@ export default function Header() {
   const dispatch = useDispatch()
 
   const styles = css`
+    color: ${theme.text};
     background-color: ${theme.purple};
     display: flex;
     justify-content: space-between;
@@ -22,14 +23,14 @@ export default function Header() {
       position: relative;
       border-radius: 25%;
       padding: 5px;
-      background-color: #7f7ffc;
+      background-color: ${theme.purple};
       border: none;
       cursor: pointer;
       color: inherit;
     }
 
     button:hover {
-      background-color: #a8a8ff;
+      background-color: ${theme.lightPurple};
       transform: scale(1.1);
     }
 
@@ -37,12 +38,16 @@ export default function Header() {
       position: absolute;
       bottom: -5px;
       right: -5px;
-      background-color: #3c5bc2;
+      background-color: ${theme.blue};
       border-radius: 50%;
-      color: white;
+      color: ${theme.text};
       width: 15px;
       height: 15px;
       padding: 5px;
+    }
+
+    .icon-tabler {
+      stroke: ${theme.text};
     }
   `
 
@@ -51,7 +56,7 @@ export default function Header() {
       <h1>Penny Candy Store</h1>
       <ThemeToggle />
       <button onClick={() => dispatch(toggleCartView())}>
-        <img src={cartSVG} alt="cart" />
+        <CartSVG />
         <p className="cartTotal">{cartCount}</p>
       </button>
     </div>
