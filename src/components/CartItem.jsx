@@ -45,14 +45,15 @@ export default function CartItem({ item }) {
     .icon {
       cursor: pointer;
       stroke: ${theme.text};
-      width: 40px;
+      width: 20px;
+      height: 20px;
     }
 
     button {
       align-self: flex-end;
       padding: 5px;
       border-radius: 5px;
-      background-color: ${theme.primaryHighlight};
+      background-color: ${theme.primaryColor};
       color: ${theme.text};
       border: none;
       cursor: pointer;

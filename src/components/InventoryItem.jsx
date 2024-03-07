@@ -101,7 +101,7 @@ export default function InventoryItem({ item }) {
       <div className="imgContainer">
         <img src={item.photoUrl} alt={item.name} />
       </div>
-      <p>Price: ${item.price}</p>
+      <p>Price: ${item.price.toFixed(2)}</p>
       <p>{item.inStock > 0 ? `Stock: ${item.inStock}` : "Out of stock"}</p>
       <div>
         <input
