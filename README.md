@@ -1,8 +1,16 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/VEKDmqz2)
-# Assignment 4
+# Redux Candy Store
+This web app was made to fulfill an assignment requirement for an Advanced Web Development class that focused on React. It's made with React, Redux, and Emotion CSS. In addition to the assignment requirements listed below, I implemented a light/dark theme toggle and tried to make the app fairly responsive to various screen sizes. 
 
-**Assignment due at 11:59pm on Monday, 3/11/2024**<br>
-**Grading demo due by 5:00pm on Friday 3/22/2024**
+The app can be viewed in the browser [here](https://redux-candy-store.onrender.com/), where it's hosted via [Render](https://render.com/).
+
+To run locally:
+- Copy the repo
+- Navigate to root directory
+- Run `npm install`
+- Run `npm run dev`
+- Navigate to http://localhost:5173/ in your browser
+
+# Assignment 4
 
 The goal of this assignment is to use Redux to maintain the global state of an application.  You will specifically implement a basic shopping cart application for the "Penny Candy Store", an online store that sells penny candy.
 
@@ -61,24 +69,3 @@ The shopping cart should also have the following features:
 Think carefully about how to design the Redux elements related to the shopping cart.  For example, you'll likely need several actions, e.g. one to add an item to the cart, one to remove an item from the cart and place it back in inventory, one to checkout, etc.
 
 Importantly, because the cart data and inventory data must be managed by separate slices, some actions will affect multiple slices.  For example, the "add to cart" action will both add items to the cart and subtract them from the inventory.  You'll need to figure out how to implement actions that affect multiple slices.  Refer to the React Toolkit documentation on [the `extraReducers` option](https://redux-toolkit.js.org/api/createSlice#extrareducers) to the `createSlice()` function for more info on how to set this up.
-
-## Running the application
-
-The code you're provided with here was created using Vite.  Before the first time you run this app, make sure to run `npm install` to install needed dependencies.  Then, to run the app, you can run:
-```
-npm run dev
-```
-This will run the app using Vite's development server.  You should be able to visit the running app by viewing [http://localhost:5173](http://localhost:5173) (or whatever URL Vite gives you) to view the app in your browser.
-
-## Assignment submission
-
-We'll be using GitHub Classroom for this assignment, and you will submit your assignment via GitHub.  Just make sure your completed files are committed and pushed by the assignment's deadline to the main branch of the GitHub repo that was created for you by GitHub Classroom.  A good way to check whether your files are safely submitted is to look at the main branch your assignment repo on the github.com website (i.e. https://github.com/osu-cs494-w24/assignment-4-YourGitHubUsername/). If your changes show up there, you can consider your files submitted.
-
-## Assignment grading
-
-This assignment is worth 10 points total.
-
-Remember that in this course, programming assignments will be graded based on effort instead of correctness, and you will get full credit for an assignment if it is submitted on time and is clearly the product of a determined effort to solve the problem.  Again, If you’re unable to solve the homework problem, make sure to submit all code you’ve written, and then describe in comments in the source code the following three things:
-  1. How you attempted to solve the problem.
-  2. Where you ran into trouble.
-  3. What options you think (conceptually) might lead to a working solution.
